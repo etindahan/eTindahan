@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "346246612702",
+    "firebase_url": "https://etindahan-9caff.firebaseio.com",
+    "project_id": "etindahan-9caff",
+    "storage_bucket": "etindahan-9caff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346246612702:android:9eb77185d9a45bca",
+        "android_client_info": {
+          "package_name": "com.etindahan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "346246612702-hf2vcmkcaeal021002l60u9sls3iimio.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmG_8rOQX2UdK33ffzbrZ9UhRVvXVMQX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "346246612702-hf2vcmkcaeal021002l60u9sls3iimio.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
