@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-        //Hong was here :D
+        //Hong was here :D Ced too
 
 
     }
