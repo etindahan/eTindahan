@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "346246612702-su9motfc6gslh2c3sdp2usn6if8e6lun.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.etindahan",
+            "certificate_hash": "ec8c27a92e319cabeabcef1854a40a0b4facc4b2"
+          }
+        },
+        {
           "client_id": "346246612702-hf2vcmkcaeal021002l60u9sls3iimio.apps.googleusercontent.com",
           "client_type": 3
         }
