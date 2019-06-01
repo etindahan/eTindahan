@@ -48,31 +48,28 @@ public class LoginActivity extends AppCompatActivity {
                 String password = Password.getText().toString();
 
                 if(email == null && password == null){
-                    Toast.makeText(LoginActivity.this, "Please complete the field!",
-                            Toast.LENGTH_SHORT).show();
-                }
-                else if (email.length() <= 6 && password.length() <= 6){
-                    Toast.makeText(LoginActivity.this, "Please complete the field!",
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Please complete the field!", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     mAuth.signInWithEmailAndPassword(email, password)
                             .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (!task.isSuccessful()) {
-                                        Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                                Toast.LENGTH_SHORT).show();
+                                    if (task.isSuccessful()) {
+                                        if(mAuth.getCurrentUser().isEmailVerified()){
+                                            startActivity(new Intent(LoginActivity.this  , MainActivity.class));
+                                            finish();
+                                        }
+                                        else{
+                                            Toast.makeText(LoginActivity.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
+                                        }
                                     } else {
-                                        // If sign in fails, display a message to the user.
-                                        checkIfEmailVerified();
+                                        Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
-
                                     // ...
                                 }
                             });
                     }
-
 
 
             }
@@ -81,42 +78,31 @@ public class LoginActivity extends AppCompatActivity {
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent reg = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(reg);
+                startActivity(new Intent(LoginActivity.this  , RegisterActivity.class));
             }
         });
 
         TOMAIN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent reg = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(reg);
+                startActivity(new Intent(LoginActivity.this  , MainActivity.class));
             }
         });
 
 
     }
 
-    //Henllo! Di pa tapos tong Login :D
+    @Override
+    public void onStart() {
+        super.onStart();
 
-    private void checkIfEmailVerified() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = mAuth.getCurrentUser();
 
-        if (user.isEmailVerified())
-        {
-            // user is verified, so you can finish this activity or send user to activity which you want.
-            finish();
-            Toast.makeText(LoginActivity.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+        if(user != null && user.isEmailVerified()){
+            startActivity(new Intent(LoginActivity.this  , MainActivity.class));
         }
-        else
-        {
-            // email is not verified, so just prompt the message to the user and restart this activity.
-            // NOTE: don't forget to log out the user.
-            FirebaseAuth.getInstance().signOut();
-            //restart this activity
 
-        }
+
     }
-
 
 }

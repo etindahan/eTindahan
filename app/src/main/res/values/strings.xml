@@ -4,4 +4,16 @@
     <string name="enter_email">Email</string>
     <string name="register_now">Register now!</string>
     <string name="go_to_main_activity">Go to main activity</string>
+    <string name="are_you_a">are you a</string>
+    <string name="or_a">or a</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="_63">+63</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="phone_number">Phone number</string>
+    <string name="register">Register</string>
+    <string name="buyer">Buyer</string>
+    <string name="seller">Seller</string>
+    <string name="todo">TODO</string>
 </resources>
