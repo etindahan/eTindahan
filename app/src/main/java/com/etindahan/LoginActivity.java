@@ -17,12 +17,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.w3c.dom.Text;
+
 public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private Button Login;
     private EditText Email, Password;
-    private TextView Register;
+    private TextView Register,TOMAIN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         Email = (EditText) findViewById(R.id.EmailField);
         Password = (EditText) findViewById(R.id.PasswordField);
         Register = (TextView) findViewById(R.id.RegisterText);
+        TOMAIN = (TextView) findViewById(R.id.ToMainButton);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -79,6 +82,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent reg = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(reg);
+            }
+        });
+
+        TOMAIN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent reg = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(reg);
             }
         });
