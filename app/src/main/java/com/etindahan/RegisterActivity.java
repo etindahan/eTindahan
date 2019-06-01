@@ -109,13 +109,12 @@ public class RegisterActivity extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    userGetterSetter.setUid(mAuth.getCurrentUser().getUid());
                                                     userGetterSetter.setEmail(EmailText);
                                                     userGetterSetter.setFirst_name(FirstNameText);
                                                     userGetterSetter.setLast_name(LastNameText);
                                                     userGetterSetter.setContact_number(PhoneNUM);
                                                     userGetterSetter.setUser_type(Type);
-                                                    reference.push().setValue(userGetterSetter);
+                                                    reference.child(mAuth.getCurrentUser().getUid()).setValue(userGetterSetter);
                                                     Toast.makeText(RegisterActivity.this, "Registered successfully! Please check your email for verification", Toast.LENGTH_SHORT).show();
                                                     startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                                                     finish();
