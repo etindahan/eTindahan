@@ -109,6 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
+                                                    userGetterSetter.setAddress("");
                                                     userGetterSetter.setEmail(EmailText);
                                                     userGetterSetter.setFirst_name(FirstNameText);
                                                     userGetterSetter.setLast_name(LastNameText);
