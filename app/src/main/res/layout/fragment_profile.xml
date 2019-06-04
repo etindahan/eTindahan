@@ -7,8 +7,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:layout_width="376dp"
-        android:layout_height="120dp"
+        android:layout_width="391dp"
+        android:layout_height="118dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="64dp"
@@ -22,8 +22,8 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="108dp"
-            android:layout_height="118dp"
+            android:layout_width="103dp"
+            android:layout_height="108dp"
             android:layout_weight="1"
             android:contentDescription="TODO"
             app:srcCompat="@drawable/dahyun_placeholder"
@@ -31,7 +31,7 @@
 
         <Space
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1" />
 
         <LinearLayout
@@ -39,10 +39,6 @@
             android:layout_height="115dp"
             android:layout_weight="1"
             android:orientation="vertical">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="12dp" />
 
             <TextView
                 android:id="@+id/NameTEXTVIEW"
@@ -52,17 +48,15 @@
                 android:textSize="30sp" />
 
             <TextView
-                android:id="@+id/AddressTextView"
+                android:id="@+id/EmailTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="placeholder@mail.com"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/PhoneTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="+6391999999999"
                 android:textSize="18sp" />
 
         </LinearLayout>

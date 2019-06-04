@@ -1,10 +1,23 @@
 package com.etindahan;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class UserGetterSetter {
 
     private String uid,user_type,first_name,last_name,email,contact_number,address;
+    private String shop_name;
 
     public UserGetterSetter() {
+
+    }
+
+    public UserGetterSetter(String shop_name, String address, String uid) {
+        this.uid = uid;
+        this.shop_name = shop_name;
+        this.address = address;
     }
 
     public String getUid() {
@@ -62,4 +75,21 @@ public class UserGetterSetter {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    //GET SHOP FOR HOME/MAIN FRAGMENT
+
+    public String getshop_name() { return shop_name; }
+
+    public void setshop_mame(String shop_mame) { shop_mame = shop_mame; }
+
+    @Exclude
+    public Map<String, Object> toMap(){
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("shop_name",shop_name);
+
+        return result;
+    }
+
+
+    //
 }
