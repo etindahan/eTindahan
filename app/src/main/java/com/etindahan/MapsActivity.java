@@ -1,7 +1,16 @@
 package com.etindahan;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -12,12 +21,17 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 
+import java.util.Map;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
     public String ShopName;
-    private float longitude = 0.0f, latitude=0.0f;
+    private float longitude = 0.0f, latitude = 0.0f;
+
+    private Button locate;
+    Location currentLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +42,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        if(getIntent().hasExtra("userGetterSetter")) {
+
+        if (getIntent().hasExtra("userGetterSetter")) {
             String data = getIntent().getStringExtra("userGetterSetter");
             UserGetterSetter userGetterSetter = new Gson().fromJson(data, UserGetterSetter.class);
 
+            //Get shop info including location
             ShopName = userGetterSetter.getshop_name();
-
             latitude = userGetterSetter.getLatitude();
             longitude = userGetterSetter.getLongitude();
 
@@ -41,6 +56,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         }
+
+        locate = findViewById(R.id.getlocationButton);
+
+
     }
 
 
@@ -62,7 +81,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(sydney).title(ShopName));
 
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(15.5f));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
+
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(10f));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }
