@@ -9,6 +9,7 @@ public class UserGetterSetter {
 
     private String uid,user_type,first_name,last_name,email,contact_number,address;
     private String shop_name;
+    private Float latitude,longitude;
 
     public UserGetterSetter() {
 
@@ -90,6 +91,15 @@ public class UserGetterSetter {
         return result;
     }
 
+    //
 
+    //MAP SETTER
+    public Float getLatitude() { return latitude; }
+
+    public void setLatitude(Float latitude) { this.latitude = latitude; }
+
+    public Float getLongitude() { return longitude; }
+
+    public void setLongitude(Float longitude) { this.longitude = longitude; }
     //
 }

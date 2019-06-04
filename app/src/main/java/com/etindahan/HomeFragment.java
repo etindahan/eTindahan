@@ -1,6 +1,7 @@
 package com.etindahan;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
@@ -22,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -58,6 +61,10 @@ public class HomeFragment extends Fragment {
                     view = getLayoutInflater().inflate(android.R.layout.two_line_list_item, parent, false);
                 }
                 UserGetterSetter func = list_of_shops.get(position);
+
+                ((TextView) view.findViewById(android.R.id.text1)).setTextSize(25);
+                ((TextView) view.findViewById(android.R.id.text1)).setTypeface(Typeface.DEFAULT);
+
                 ((TextView) view.findViewById(android.R.id.text1)).setText(func.getshop_name());
                 ((TextView) view.findViewById(android.R.id.text2)).setText(func.getAddress());
                 return view;
@@ -99,7 +106,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(getActivity(), BuyerActivity.class);
+                Intent intent = new Intent(getActivity(), MapsActivity.class);
 
                 UserGetterSetter userGetterSetter = (UserGetterSetter) parent.getAdapter().getItem(position);
 

@@ -37,6 +37,7 @@ dependencies {
 
     //Add Library (for horizontal scroll menu)
     implementation 'com.github.MorochoRochaDarwin:HorizontalScrollMenu:2.0.0'
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
