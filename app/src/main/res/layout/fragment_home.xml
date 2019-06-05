@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_alignStart="@+id/ShopListView"
+        android:layout_alignLeft="@+id/ShopListView"
+        android:layout_alignEnd="@+id/ShopListView"
+        android:layout_alignRight="@+id/ShopListView"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="53dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/TestButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00FFFFFF"
+                android:src="@drawable/googleg_standard_color_18"
+                tools:srcCompat="@drawable/common_google_signin_btn_icon_dark_focused" />
+        </LinearLayout>
+    </LinearLayout>
+
 
     <ListView
         android:id="@+id/ShopListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="686dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="0dp" />
+
+
 </RelativeLayout>

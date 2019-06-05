@@ -47,7 +47,7 @@ public class ProfileFragment extends Fragment {
                 UserGetterSetter userGetterSetter = dataSnapshot.getValue(UserGetterSetter.class);
 
                 String FullName = userGetterSetter.getLast_name() +", "+ userGetterSetter.getFirst_name();
-                String FullNumber = "+639" + userGetterSetter.getContact_number();
+                String FullNumber = "+63" + userGetterSetter.getContact_number();
 
                 Name.setText(FullName);
                 Email.setText(userGetterSetter.getEmail());

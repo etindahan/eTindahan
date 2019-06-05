@@ -8,7 +8,7 @@ import java.util.Map;
 public class UserGetterSetter {
 
     private String uid,user_type,first_name,last_name,email,contact_number,address;
-    private String shop_name;
+    private String shop_name,owner_id;
     private Float latitude,longitude;
 
     public UserGetterSetter() {
@@ -102,4 +102,13 @@ public class UserGetterSetter {
 
     public void setLongitude(Float longitude) { this.longitude = longitude; }
     //
+
+
+    public String getOwner_id() {
+        return owner_id;
+    }
+
+    public void setOwner_id(String owner_id) {
+        this.owner_id = owner_id;
+    }
 }

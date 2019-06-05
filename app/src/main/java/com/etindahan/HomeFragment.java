@@ -3,7 +3,6 @@ package com.etindahan;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,23 +14,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 public class HomeFragment extends Fragment {
 
@@ -106,7 +97,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(getActivity(), MapsActivity.class);
+                Intent intent = new Intent(getActivity(), BuyerActivity.class);
 
                 UserGetterSetter userGetterSetter = (UserGetterSetter) parent.getAdapter().getItem(position);
 

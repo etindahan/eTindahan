@@ -1,34 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:background="#E0E0E0">
 
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="314dp"
-        tools:context=".MapsActivity" />
+        android:layout_height="347dp"
+        tools:context=".BuyerActivity" />
 
-    <Button
-        android:id="@+id/getlocationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:id="@+id/TopNav"
+        android:layout_width="385dp"
+        android:layout_height="35dp"
+        android:layout_alignStart="@+id/map"
+        android:layout_alignLeft="@+id/map"
+        android:layout_alignTop="@+id/map"
+        android:layout_alignEnd="@+id/map"
+        android:layout_alignRight="@+id/map"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="42dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/returnbutton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00FFFFFF"
+                android:src="?attr/homeAsUpIndicator"
+                tools:srcCompat="?attr/actionModeCloseDrawable" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/shopNameField"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="fill"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/BottomContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@+id/map"
+        android:layout_alignBottom="@+id/bottom_navigation"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="161dp"
-        android:layout_marginLeft="161dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginRight="162dp"
-        android:text="Locate" />
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:background="#D5FFFFFF"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/imageView3"
+                android:layout_width="13dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                map:srcCompat="@drawable/dahyun_placeholder"
+                tools:srcCompat="@tools:sample/avatars[3]" />
+
+            <LinearLayout
+                android:layout_width="312dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/shopnameinfobar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/owner_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/contact_numberView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="6dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignStart="@+id/BottomContainer"
+            android:background="#FFFFFF"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ratings: 0" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Go to products" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/bottom_navigation_shop" />
 
 
 </RelativeLayout>

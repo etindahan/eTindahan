@@ -2,12 +2,12 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@android:color/holo_green_light">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:layout_width="355dp"
+        android:layout_width="0dp"
         android:layout_height="110dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -27,11 +27,6 @@
             android:contentDescription="TODO"
             app:srcCompat="@drawable/dahyun_placeholder"
             tools:srcCompat="@tools:sample/avatars[2]" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="234dp"
@@ -78,7 +73,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="374dp"
+        android:layout_width="match_parent"
         android:layout_height="401dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -93,12 +88,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/space">
 
-        <Button
-            android:id="@+id/LogoutButton"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Logout" />
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="Profile Settings" />
+
+            <Button
+                android:id="@+id/LogoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="Logout" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
