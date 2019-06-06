@@ -7,50 +7,49 @@
 
     <EditText
         android:id="@+id/EmailField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginLeft="65dp"
-        android:layout_marginTop="152dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginRight="65dp"
-        android:layout_marginBottom="10dp"
+        android:layout_width="281dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="@string/enter_email"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/PasswordField"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/PasswordField"
-        android:layout_width="0dp"
+        android:layout_width="281dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:layout_marginLeft="65dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginRight="65dp"
-        android:layout_marginBottom="31dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="36dp"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/SigninButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EmailField" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/SigninButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="160dp"
-        android:layout_marginRight="160dp"
-        android:layout_marginBottom="399dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="60dp"
         android:text="@string/common_signin_button_text"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordField" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/RegisterText"
@@ -60,7 +59,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginBottom="80dp"
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="casual"
@@ -81,7 +80,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/go_to_main_activity"
@@ -93,7 +92,7 @@
     <TextView
         android:id="@+id/textView7"
         android:layout_width="163dp"
-        android:layout_height="30dp"
+        android:layout_height="38dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
@@ -112,6 +111,5 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/RegisterText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
