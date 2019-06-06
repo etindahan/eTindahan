@@ -35,14 +35,14 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".SellerActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".SplashScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SplashScreen" />
         <activity android:name=".MainActivity" />
 
         <meta-data
