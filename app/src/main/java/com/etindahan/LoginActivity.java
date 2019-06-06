@@ -31,11 +31,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Login = (Button) findViewById(R.id.SigninButton);
-        Email = (EditText) findViewById(R.id.EmailField);
-        Password = (EditText) findViewById(R.id.PasswordField);
-        Register = (TextView) findViewById(R.id.RegisterText);
-        TOMAIN = (TextView) findViewById(R.id.ToMainButton);
+        Login = findViewById(R.id.SigninButton);
+        Email = findViewById(R.id.EmailField);
+        Password = findViewById(R.id.PasswordField);
+        Register = findViewById(R.id.RegisterText);
+        TOMAIN = findViewById(R.id.ToMainButton);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -100,9 +100,9 @@ public class LoginActivity extends AppCompatActivity {
 
         if(user != null && user.isEmailVerified()){
             startActivity(new Intent(LoginActivity.this  , MainActivity.class));
+            finish();
         }
 
 
     }
-
 }
