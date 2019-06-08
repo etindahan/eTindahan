@@ -26,9 +26,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".MainHome"></activity>
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAZ8MMs0zJwsqzBivagSRYfaANZ2dsYc2I" />
 
         <activity
             android:name=".BuyerActivity"
@@ -52,12 +50,8 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" />
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" />
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+
     </application>
 
 </manifest>

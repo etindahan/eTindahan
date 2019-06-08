@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -58,6 +59,7 @@ public class HomeFragment extends Fragment {
 
                 ((TextView) view.findViewById(android.R.id.text1)).setText(func.getshop_name());
                 ((TextView) view.findViewById(android.R.id.text2)).setText(func.getAddress());
+
                 return view;
             }
         };

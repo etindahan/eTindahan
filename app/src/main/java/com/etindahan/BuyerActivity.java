@@ -3,15 +3,22 @@ package com.etindahan;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.provider.CalendarContract;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.directions.route.AbstractRouting;
+import com.directions.route.Route;
+import com.directions.route.RouteException;
+import com.directions.route.Routing;
+import com.directions.route.RoutingListener;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -20,6 +27,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,21 +37,30 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 
-public class BuyerActivity extends FragmentActivity implements OnMapReadyCallback {
+public class BuyerActivity extends FragmentActivity implements OnMapReadyCallback, RoutingListener {
 
 
     private GoogleMap mMap;
+    View mapView;
+    private float longitude = 0.0f, latitude = 0.0f;
+    private FusedLocationProviderClient client;
+
+    private List<Polyline> polylines;
+    private static final int[] COLORS = new int[]{R.color.design_default_color_primary_dark};
+
+
+    LatLng shoploc;
 
     public String ShopName, shop_owner_uid;
-    private float longitude = 0.0f, latitude = 0.0f;
     private ImageButton back_button;
 
-    View mapView;
 
-    private FusedLocationProviderClient client;
 
     private TextView shop_name_field, owner_name_field, shop_name_infobar_field, phone_number_field;
 
@@ -59,8 +77,7 @@ public class BuyerActivity extends FragmentActivity implements OnMapReadyCallbac
         back_button = findViewById(R.id.returnbutton);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapView = mapFragment.getView();
         mapFragment.getMapAsync(this);
 
@@ -120,14 +137,19 @@ public class BuyerActivity extends FragmentActivity implements OnMapReadyCallbac
         client.getLastLocation().addOnSuccessListener(BuyerActivity.this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                if(location!=null){
+            if(location != null) {
 
-                   //double loc = location.getLongitude();
+                   // double userlat = location.getLatitude();
+                   // double userlong = location.getLongitude();
 
-                    Toast.makeText(BuyerActivity.this, location.toString(), Toast.LENGTH_LONG).show();
+                   // LatLng user_location = new LatLng(userlat,userlong);
+
+                   // polylines = new ArrayList<>();
+                   // getRouteToMarker(user_location);
                 }
             }
         });
+
 
     }
 
@@ -147,11 +169,11 @@ public class BuyerActivity extends FragmentActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().position(sydney).title(ShopName));
+        shoploc = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(shoploc).title(ShopName));
 
         if (ActivityCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
+            //   BEING CALLED AT FIRST LAUNCH :D
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
@@ -162,9 +184,9 @@ public class BuyerActivity extends FragmentActivity implements OnMapReadyCallbac
         }
 
         mMap.setMyLocationEnabled(true);
-
         mMap.moveCamera(CameraUpdateFactory.zoomTo(15f));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(shoploc));
+
 
         // GPS BUTTON LOCATION
             if (mapView != null &&
@@ -185,10 +207,81 @@ public class BuyerActivity extends FragmentActivity implements OnMapReadyCallbac
 
 
 
-
     }
 
     private void requestPermission(){
         ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION},1);
+    }
+
+    //Routing/Directions :D
+
+
+
+    // TODO: Decide if we should enable DIRECTIONS API (Expensive AF $5 /1k Users) :(
+    // For now disabled muna tong API na to :(
+
+    public void getRouteToMarker(LatLng user_location){
+        Routing routing = new Routing.Builder()
+                .travelMode(AbstractRouting.TravelMode.WALKING)
+                .withListener(this)
+                .alternativeRoutes(false)
+                .waypoints(user_location,shoploc)
+                .key("AIzaSyC8bNg7gXeWbuCcXdHhYNT38yB6UJ8E2Qk")
+                .build();
+        routing.execute();
+    }
+
+
+
+    @Override
+    public void onRoutingFailure(RouteException e) {
+        if(e != null){
+            Toast.makeText(BuyerActivity.this, "Error " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(BuyerActivity.this, "Something went wrong. Try again", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onRoutingStart() {
+
+    }
+
+    @Override
+    public void onRoutingSuccess(ArrayList<Route> route, int shortestRouteIndex) {
+        if(polylines.size()>0){
+            for(Polyline poly : polylines){
+                poly.remove();
+            }
+        }
+
+
+        polylines = new ArrayList<>();
+        //add route(s) to the MAP
+        for (int i = 0; i<route.size(); i++){
+
+            //In the case of more than 5 alternative routes
+            int colorIndex = i % COLORS.length;
+
+            PolylineOptions polylineOptions = new PolylineOptions();
+            polylineOptions.color(getResources().getColor(colorIndex));
+            polylineOptions.width((10 + i * 3));
+            polylineOptions.addAll(route.get(i).getPoints());
+            Polyline polyline = mMap.addPolyline(polylineOptions);
+            polylines.add(polyline);
+
+            Toast.makeText(BuyerActivity.this,
+                    "Route " + (i+1) +": distance - " + route.get(i).getDistanceValue()+": duration - " + route.get(i).getDurationValue(), Toast.LENGTH_LONG).show();
+
+
+        }
+
+
+    }
+
+    @Override
+    public void onRoutingCancelled() {
+
     }
 }
