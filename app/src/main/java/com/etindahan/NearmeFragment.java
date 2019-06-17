@@ -33,7 +33,7 @@ public class NearmeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View  mainview = inflater.inflate(R.layout.fragment_NearMe, container, false);
+        View  mainview = inflater.inflate(R.layout.fragment_nearme, container, false);
 
         Shoplist = mainview.findViewById(R.id.ShopListView);
         ShopRef = FirebaseDatabase.getInstance().getReference("shops");
