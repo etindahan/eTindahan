@@ -24,17 +24,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainHome"></activity>
+        <activity android:name=".ForgotPassword"></activity>
+        <activity android:name=".MainHome" />
 
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAZ8MMs0zJwsqzBivagSRYfaANZ2dsYc2I" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAZ8MMs0zJwsqzBivagSRYfaANZ2dsYc2I" />
 
         <activity
             android:name=".BuyerActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".SellerActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".SplashScreen" >
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,8 +53,9 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <uses-library android:name="org.apache.http.legacy" android:required="false" />
-
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
     </application>
 
 </manifest>
