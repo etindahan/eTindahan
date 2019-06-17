@@ -45,8 +45,8 @@ public class HomeFragment extends Fragment {
 
         final List<UserGetterSetter> list_of_shops = new LinkedList<>();
         final ArrayAdapter<UserGetterSetter> adapter = new ArrayAdapter<UserGetterSetter>(
-                getActivity(), android.R.layout.two_line_list_item, list_of_shops
-        ) {
+                getActivity(), android.R.layout.two_line_list_item, list_of_shops)
+        {
             @Override
             public View getView(int position, View view, ViewGroup parent) {
                 if (view == null) {

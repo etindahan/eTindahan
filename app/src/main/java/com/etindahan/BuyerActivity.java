@@ -2,6 +2,7 @@ package com.etindahan;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.provider.CalendarContract;
 import android.support.v4.app.ActivityCompat;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -54,15 +56,16 @@ public class BuyerActivity extends FragmentActivity implements OnMapReadyCallbac
     private List<Polyline> polylines;
     private static final int[] COLORS = new int[]{R.color.design_default_color_primary_dark};
 
+    double userlat =0, userlong =0 ,final1,final2;
 
+    LatLng user_location;
     LatLng shoploc;
 
     public String ShopName, shop_owner_uid;
     private ImageButton back_button;
 
 
-
-    private TextView shop_name_field, owner_name_field, shop_name_infobar_field, phone_number_field;
+    private TextView shop_name_field, owner_name_field, shop_name_infobar_field, phone_number_field, bobo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +78,8 @@ public class BuyerActivity extends FragmentActivity implements OnMapReadyCallbac
         phone_number_field = findViewById(R.id.contact_numberView);
 
         back_button = findViewById(R.id.returnbutton);
+
+        bobo = findViewById(R.id.textView13);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -91,10 +96,7 @@ public class BuyerActivity extends FragmentActivity implements OnMapReadyCallbac
             latitude = userGetterSetter.getLatitude();
             longitude = userGetterSetter.getLongitude();
             shop_owner_uid = userGetterSetter.getOwner_id();
-
-            Toast.makeText(BuyerActivity.this, userGetterSetter.getOwner_id(), Toast.LENGTH_LONG).show();
             shop_name_field.setText(userGetterSetter.getshop_name());
-
             shop_name_infobar_field.setText(userGetterSetter.getshop_name());
 
             if (shop_owner_uid != null) {
@@ -126,43 +128,7 @@ public class BuyerActivity extends FragmentActivity implements OnMapReadyCallbac
             }
         });
 
-        //Request GPS Permission
-        requestPermission();
-
-        client = LocationServices.getFusedLocationProviderClient(this);
-
-        if (ActivityCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        client.getLastLocation().addOnSuccessListener(BuyerActivity.this, new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-            if(location != null) {
-
-                   // double userlat = location.getLatitude();
-                   // double userlong = location.getLongitude();
-
-                   // LatLng user_location = new LatLng(userlat,userlong);
-
-                   // polylines = new ArrayList<>();
-                   // getRouteToMarker(user_location);
-                }
-            }
-        });
-
-
     }
-
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -170,8 +136,8 @@ public class BuyerActivity extends FragmentActivity implements OnMapReadyCallbac
 
         // Add a marker in Sydney and move the camera
         shoploc = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().position(shoploc).title(ShopName));
 
+        mMap.addMarker(new MarkerOptions().position(shoploc).title(ShopName));
         if (ActivityCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             //   BEING CALLED AT FIRST LAUNCH :D
             //    ActivityCompat#requestPermissions
@@ -187,6 +153,40 @@ public class BuyerActivity extends FragmentActivity implements OnMapReadyCallbac
         mMap.moveCamera(CameraUpdateFactory.zoomTo(15f));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(shoploc));
 
+
+        //Request GPS Permission
+        requestPermission();
+
+        client = LocationServices.getFusedLocationProviderClient(this);
+        if (ActivityCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            //Ask for permission :D
+            return;
+        }
+        client.getLastLocation().addOnSuccessListener(BuyerActivity.this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if(location != null) {
+
+                    userlat  =  location.getLatitude();
+                    userlong =  location.getLongitude();
+
+                    user_location = new LatLng(userlat,userlong);
+
+                    // polylines = new ArrayList<>();
+                    // getRouteToMarker(user_location);
+
+                    mMap.addMarker(new MarkerOptions().position(user_location).title("You"));
+                    mMap.addCircle(new CircleOptions()
+                            .center(user_location)
+                            .radius(400)
+                            .strokeColor(Color.RED)
+                            .fillColor(Color.BLUE));
+
+                    String message = String.format("latitude = %f longitude = %f",userlat,userlong);
+                    bobo.setText(message);
+                }
+            }
+        });
 
         // GPS BUTTON LOCATION
             if (mapView != null &&
@@ -204,19 +204,14 @@ public class BuyerActivity extends FragmentActivity implements OnMapReadyCallbac
         //
 
 
-
-
-
     }
 
     private void requestPermission(){
         ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION},1);
     }
 
+
     //Routing/Directions :D
-
-
-
     // TODO: Decide if we should enable DIRECTIONS API (Expensive AF $5 /1k Users) :(
     // For now disabled muna tong API na to :(
 
@@ -230,7 +225,6 @@ public class BuyerActivity extends FragmentActivity implements OnMapReadyCallbac
                 .build();
         routing.execute();
     }
-
 
 
     @Override
