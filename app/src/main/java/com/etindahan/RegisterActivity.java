@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button RegisterREGA;
     private Boolean Status=false;
     private String Type="";
+    private Switch switchchange;
 
     UserGetterSetter userGetterSetter;
     DatabaseReference reference;
@@ -50,6 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
         Seller = (TextView) findViewById(R.id.SellerSelection);
 
         RegisterREGA = (Button) findViewById(R.id.RegisterButton);
+
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -134,12 +138,13 @@ public class RegisterActivity extends AppCompatActivity {
                                     // ...
                                 }
                             });
+
+
                     }
 
 
             }
         });
-
 
     }
 
