@@ -22,7 +22,7 @@ import org.w3c.dom.Text;
 public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private Button Login;
+    private Button Login,pinloc;
     private EditText Email, Password;
     private TextView Register,TOMAIN, ForgotPasswordLink;
 
@@ -37,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         Register = findViewById(R.id.RegisterText);
         TOMAIN = findViewById(R.id.ToMainButton);
         ForgotPasswordLink = findViewById(R.id.forgotpasswordtext);
+
+        pinloc = findViewById(R.id.button2pinloc);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -97,7 +99,12 @@ public class LoginActivity extends AppCompatActivity {
                startActivity(new Intent(LoginActivity.this , ForgotPassword.class));
            }        });
 
-
+        pinloc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, SetLocation.class));
+            }
+        });
 
 
     }

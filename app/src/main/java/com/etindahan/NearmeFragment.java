@@ -101,7 +101,6 @@ public class NearmeFragment extends Fragment {
                         shops_near_me.remove(i);
                     }
                 }
-
                 adapter.notifyDataSetChanged();
             }
 
