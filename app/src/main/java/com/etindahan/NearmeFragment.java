@@ -146,8 +146,4 @@ public class NearmeFragment extends Fragment {
     }
 
 
-
-
-
-
 }
