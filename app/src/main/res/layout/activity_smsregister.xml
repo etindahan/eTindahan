@@ -82,17 +82,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/emailFieldREG"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/email_address"
-                android:inputType="textWebEmailAddress|textPersonName" />
-
-        </LinearLayout>
+            android:orientation="vertical"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -131,14 +121,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/passwordFieldREG"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/password"
-                android:inputType="textPassword" />
 
             <EditText
                 android:id="@+id/confirmFieldREG"
@@ -180,7 +162,7 @@
         android:id="@+id/textView14"
         android:layout_width="254dp"
         android:layout_height="55dp"
-        android:text="To use your email address instead of your phone number, please check the checkbox below."
+        android:text="To use your email address instead of your phone number, please click on the checkbox below."
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="466dp" />
 

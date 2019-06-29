@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -33,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Boolean Status=false;
     private String Type="";
     private Switch switchchange;
+    private CheckBox check;
 
     UserGetterSetter userGetterSetter;
     DatabaseReference reference;
@@ -53,6 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
         Seller = (TextView) findViewById(R.id.SellerSelection);
 
         RegisterREGA = (Button) findViewById(R.id.RegisterButton);
+        check = (CheckBox) findViewById(R.id.toSMS);
 
 
         // Initialize Firebase Auth
@@ -81,6 +84,14 @@ public class RegisterActivity extends AppCompatActivity {
                 Status = true;
             }
         });
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =  new Intent(RegisterActivity.this, SMSRegister.class);
+                startActivity(intent);
+            }
+        });
+
 
         RegisterREGA.setOnClickListener(new View.OnClickListener() {
             @Override

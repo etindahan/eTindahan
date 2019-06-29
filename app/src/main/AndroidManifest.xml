@@ -24,7 +24,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SMSRegister"></activity>
+        <activity android:name=".PhoneVerification"></activity>
+        <activity android:name=".SMSRegister" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".MainHome" />
 
