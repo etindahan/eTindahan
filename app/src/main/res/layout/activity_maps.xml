@@ -133,6 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignStart="@+id/BottomContainer"
+            android:layout_alignBottom="@+id/BottomContainer"
             android:background="#FFFFFF"
             android:orientation="vertical">
 

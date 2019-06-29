@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/tempbg"
+    android:scaleType="centerCrop"
     tools:context=".SplashScreen">
 
     <ImageView
@@ -19,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/googleg_standard_color_18"
-        tools:srcCompat="@drawable/googleg_standard_color_18" />
+        tools:srcCompat="@drawable/logo" />
 
     <ProgressBar
         android:id="@+id/progressBar"
