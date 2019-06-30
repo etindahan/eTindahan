@@ -139,13 +139,6 @@ public class BuyerActivity extends FragmentActivity implements OnMapReadyCallbac
 
         mMap.addMarker(new MarkerOptions().position(shoploc).title(ShopName));
         if (ActivityCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            //   BEING CALLED AT FIRST LAUNCH :D
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
 
@@ -153,15 +146,10 @@ public class BuyerActivity extends FragmentActivity implements OnMapReadyCallbac
         mMap.moveCamera(CameraUpdateFactory.zoomTo(15f));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(shoploc));
 
-
         //Request GPS Permission
         requestPermission();
 
         client = LocationServices.getFusedLocationProviderClient(this);
-        if (ActivityCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            //Ask for permission :D
-            return;
-        }
         client.getLastLocation().addOnSuccessListener(BuyerActivity.this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
