@@ -103,6 +103,7 @@
                 android:layout_width="77dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/firstname"
                 android:ems="10"
                 android:hint="@string/first_name"
                 android:inputType="textPersonName" />
@@ -112,6 +113,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/lastname"
                 android:ems="10"
                 android:hint="@string/last_name"
                 android:inputType="textPersonName" />
@@ -126,7 +128,8 @@
             <EditText
                 android:id="@+id/emailFieldREG"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/address1"
                 android:ems="10"
                 android:hint="@string/email_address"
                 android:inputType="textWebEmailAddress|textPersonName" />
@@ -158,8 +161,9 @@
             <EditText
                 android:id="@+id/phonenumFieldREG"
                 android:layout_width="267dp"
-                android:layout_height="29dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/number"
                 android:ems="10"
                 android:hint="@string/phone_number"
                 android:inputType="number|textPersonName|phone"
@@ -175,6 +179,7 @@
                 android:id="@+id/passwordFieldREG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/password"
                 android:ems="10"
                 android:hint="@string/password"
                 android:inputType="textPassword" />
@@ -183,6 +188,7 @@
                 android:id="@+id/confirmFieldREG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/confirmpass"
                 android:ems="10"
                 android:hint="@string/confirm_password"
                 android:inputType="textPassword" />
