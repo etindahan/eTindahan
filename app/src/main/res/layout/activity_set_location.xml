@@ -15,6 +15,39 @@
         android:layout_height="match_parent"
         tools:context=".SetLocation" />
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="33dp"
+        android:layout_height="36dp"
+        android:layout_centerInParent="true" />
+
+
+    <ImageView
+        android:id="@+id/confirm_address_map_custom_marker"
+        android:layout_width="33dp"
+        android:layout_height="36dp"
+        android:layout_above="@+id/view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-36dp"
+        android:src="@drawable/logo" />
+
+    <Button
+        android:id="@+id/set_locationButton"
+        android:layout_width="369dp"
+        android:layout_height="72dp"
+        android:layout_alignBottom="@+id/map"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
+        android:layout_marginBottom="16dp"
+        android:text="Set Location" />
+
     <LinearLayout
         android:layout_width="337dp"
         android:layout_height="35dp"
@@ -39,6 +72,12 @@
             android:text="Please select your location"
             android:textSize="15sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
     </LinearLayout>
 
 
